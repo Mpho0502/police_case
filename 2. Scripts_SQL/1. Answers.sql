@@ -4,12 +4,12 @@
 --1. Display all records from the CriminalCases table. 
 
 SELECT * 
-FROM [Police_Case].[dbo].[south_africa_criminal_database]
+FROM [Police_Case].[dbo].[south_africa_criminal_database];
 
 --2. Count the total number of cases in the table. 
 
 SELECT COUNT (*) AS Total_Number_of_Cases 
-FROM [Police_Case].[dbo].[south_africa_criminal_database]
+FROM [Police_Case].[dbo].[south_africa_criminal_database];
 
 --3. Count the number of cases in each province. 
 
@@ -17,13 +17,13 @@ SELECT ([Province]),
 
 COUNT ([CaseNumber]) AS No_of_Cases_in_each_province
 FROM [Police_Case].[dbo].[south_africa_criminal_database]
-GROUP BY [Province]
+GROUP BY [Province];
 
 --4. Retrieve all cases where the crime type is Fraud. 
 
 SELECT * 
 FROM [Police_Case].[dbo].[south_africa_criminal_database]
-WHERE [CrimeType] = 'Fraud'
+WHERE [CrimeType] = 'Fraud';
 
 --5. Count the number of cases for each crime type. 
 
@@ -32,7 +32,7 @@ SELECT CrimeType,
 COUNT(*) AS No_of_cases_for_each_crime
 FROM [Police_Case].[dbo].[south_africa_criminal_database]
 GROUP BY [CrimeType]
-ORDER BY[CrimeType] DESC
+ORDER BY[CrimeType] DESC;
 
 --6. Display all cases classified as High or Critical risk.
 
@@ -43,7 +43,11 @@ WHERE [RiskLevel] = 'High' OR [RiskLevel] = 'Critical';
 
 --7. Calculate the average Financial Score of all suspects. 
 
+SELECT AVG([FinancialScore]) AS Average_Financial_score_for_all_suspects
+FROM [Police_Case].[dbo].[south_africa_criminal_database]
+
 --8. Find the highest Estimated Fraud Amount recorded. 
+
 
 --9. Retrieve the top 10 cases with the highest Estimated Fraud Amount. 
 
