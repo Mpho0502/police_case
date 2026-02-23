@@ -67,13 +67,39 @@ WHERE [Arrested] = 'YES';
 
 --11. Count how many suspects were arrested versus not arrested. 
 
+SELECT
+COUNT(CASE WHEN Arrested = 'YES' THEN 1 END) AS suspects_arrested,
+COUNT(CASE WHEN Arrested = 'NO' THEN 1 END) AS suspects_not_arrested
+FROM [Police_Case].[dbo].[south_africa_criminal_database];
+
+
 --12. Count the number of cases associated with each bank. 
+
+SELECT [BankInvolved],
+COUNT(*) AS No_of_cases_associated_with_each_bank
+FROM [Police_Case].[dbo].[south_africa_criminal_database]
+GROUP BY [BankInvolved]
+ORDER BY [BankInvolved] DESC; 
 
 --13. Calculate the total Estimated Fraud Amount per province. 
 
+SELECT [Province],
+SUM(EstimatedFraudAmount_ZAR) AS total_estimated_fraud_amount
+FROM [Police_Case].[dbo].[south_africa_criminal_database]
+WHERE [EstimatedFraudAmount_ZAR] IS NOT NULL
+GROUP BY [Province]
+ORDER BY total_estimated_fraud_amount DESC;
+
 --14. Retrieve all suspects older than 50 years. 
 
+SELECT *
+FROM [Police_Case].[dbo].[south_africa_criminal_database]
+WHERE Age >= 50
+ORDER BY Age ASC;
+
 --15. Calculate the average age of suspects per province. 
+
+
 
 --16. Display all cases recorded from 2020 onwards. 
 
